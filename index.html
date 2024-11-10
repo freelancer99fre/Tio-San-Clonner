@@ -148,34 +148,10 @@ em uma <span style="color:#FFDB1F">Máquina de Monetização</span></h2>		</div>
 		</div>
 					</div>
 		</section>
-		<script>
-			// Verifica se o dado foi salvo no sessionStorage
-			if (!sessionStorage.getItem('hasReloaded')) {
-				// Marca que a página foi carregada e recarregada uma vez
-				sessionStorage.setItem('hasReloaded', 'true');
-				// Recarrega a página
-				location.reload();
-			} else {
-				// Verifica se o dado foi salvo no sessionStorage para os 5 segundos
-				if (!sessionStorage.getItem('delayPassed')) {
-					// Função que vai exibir a div com o id "deley" após 5 segundos
-					setTimeout(function() {
-						var div = document.getElementById('deley');
-						div.style.display = 'block'; // Altera o display para block após o tempo
-						// Salva no sessionStorage que o atraso já ocorreu
-						sessionStorage.setItem('delayPassed', 'true');
-					}, 5000); // 5000 milissegundos = 5 segundos (para teste)
-				} else {
-					// Caso o usuário já tenha passado pelos 5 segundos, exibe a div imediatamente
-					var div = document.getElementById('deley');
-					div.style.display = 'block';
-				}
-			}
-		</script>
+	
 		
 		
-		
-		<div id="deley" style="display: none ;">
+		<div id="deley" style="display: none !important ;">
 				<section class="elementor-section elementor-top-section elementor-element elementor-element-69d39bb button_checkout elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="69d39bb" data-element_type="section" data-settings="{" background_background":"classic"}"="" style="display:block">
 						<div class="elementor-container elementor-column-gap-default">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7ececc3" data-id="7ececc3" data-element_type="column">
@@ -1762,6 +1738,42 @@ será atualizado para você a frente de todos do mercado.
 				} );
 			</script>
 			<noscript><img height="1" width="1" style="display: block;" src="https://www.facebook.com/tr?id=314700491056244&ev=PageView&noscript=1&cd%5Bpage_title%5D=IML&cd%5Bpost_type%5D=page&cd%5Bpost_id%5D=792&cd%5Bplugin%5D=PixelYourSite&cd%5Buser_role%5D=guest&cd%5Bevent_url%5D=influencermilionario.com%2F" alt=""></noscript>
+			<script>
+				if (!localStorage.getItem('hasReloaded')) {
+			console.log("Primeiro carregamento - recarregando a página.");
+			localStorage.setItem('hasReloaded', 'true');
+			location.reload();
+		} else {
+			console.log("A página foi recarregada uma vez.");
+			const delayPassed = sessionStorage.getItem('delayPassed');
+		
+			if (!delayPassed) {
+				console.log("Atraso não registrado, aguardando 5 segundos.");
+				setTimeout(function() {
+					var div = document.getElementById('deley');
+					if (div) {
+						div.style.display = 'block';
+						sessionStorage.setItem('delayPassed', 'true');
+						console.log("Div exibida após o atraso.");
+					} else {
+						console.log("Div com ID 'deley' não encontrada.");
+					}
+				}, 5000);
+			} else {
+				
+				console.log("Atraso já registrado, exibindo a div imediatamente.");
+				var div = document.getElementById('deley');
+				if (div) {
+					div.style.display = 'block';
+				} else {
+					console.log("Div com ID 'deley' não encontrada.");
+				}
+			}
+		}
+		
+		
+				</script>
+				
 <script id="site_tracking-js-extra">
 var php_data = {"ac_settings":{"tracking_actid":null,"site_tracking_default":1},"user_email":""};
 </script>
