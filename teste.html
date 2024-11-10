@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Delay</title>
+</head>
+<body>
+    <div id="deley" style="display: none;">Aguarde 5 segundos!</div>
+
+    <script>
+        // Verifica se o dado foi salvo no localStorage
+        if (!localStorage.getItem('delayPassed')) {
+            // Função que vai exibir a div com o id "deley" após 5 segundos
+            setTimeout(function() {
+                var div = document.getElementById('deley');
+                div.style.display = 'block'; // Altera o display para block após o tempo
+                // Salva no localStorage que o atraso já ocorreu
+                localStorage.setItem('delayPassed', 'true');
+            }, 5000); // 5000 milissegundos = 5 segundos (para teste)
+        } else {
+            // Caso a pessoa já tenha passado pelos 5 segundos, exibe a div imediatamente
+            var div = document.getElementById('deley');
+            div.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

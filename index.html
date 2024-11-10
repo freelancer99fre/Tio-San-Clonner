@@ -148,15 +148,34 @@ em uma <span style="color:#FFDB1F">Máquina de Monetização</span></h2>		</div>
 		</div>
 					</div>
 		</section>
-	    <script>
-			// Função que vai exibir a div com o id "deley" após 5 segundos
-			setTimeout(function() {
-				var div = document.getElementById('deley');
-				div.style.display = 'block'; // Altera o display para block após o tempo
-			}, 900000); // 5000 milissegundos = 5 segundos (para teste)
+		<script>
+			// Verifica se o dado foi salvo no sessionStorage
+			if (!sessionStorage.getItem('hasReloaded')) {
+				// Marca que a página foi carregada e recarregada uma vez
+				sessionStorage.setItem('hasReloaded', 'true');
+				// Recarrega a página
+				location.reload();
+			} else {
+				// Verifica se o dado foi salvo no sessionStorage para os 5 segundos
+				if (!sessionStorage.getItem('delayPassed')) {
+					// Função que vai exibir a div com o id "deley" após 5 segundos
+					setTimeout(function() {
+						var div = document.getElementById('deley');
+						div.style.display = 'block'; // Altera o display para block após o tempo
+						// Salva no sessionStorage que o atraso já ocorreu
+						sessionStorage.setItem('delayPassed', 'true');
+					}, 5000); // 5000 milissegundos = 5 segundos (para teste)
+				} else {
+					// Caso o usuário já tenha passado pelos 5 segundos, exibe a div imediatamente
+					var div = document.getElementById('deley');
+					div.style.display = 'block';
+				}
+			}
 		</script>
 		
-		<div id="deley" style="display: none;">
+		
+		
+		<div id="deley" style="display: none ;">
 				<section class="elementor-section elementor-top-section elementor-element elementor-element-69d39bb button_checkout elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="69d39bb" data-element_type="section" data-settings="{" background_background":"classic"}"="" style="display:block">
 						<div class="elementor-container elementor-column-gap-default">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7ececc3" data-id="7ececc3" data-element_type="column">
