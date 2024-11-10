@@ -1770,7 +1770,23 @@ será atualizado para você a frente de todos do mercado.
 				}
 			}
 		}
-		
+		document.addEventListener('DOMContentLoaded', function () {
+    // Verifica se já existe um elemento com o ID 'smartplayer'
+    var smartPlayer = document.getElementById('smartplayer');
+    
+    if (smartPlayer) {
+        // Verifica se há múltiplas instâncias do smartplayer
+        var players = document.querySelectorAll('#smartplayer');
+        
+        if (players.length > 1) {
+            // Remove as réplicas do player (exceto a primeira)
+            for (let i = 1; i < players.length; i++) {
+                players[i].remove();
+            }
+        }
+    }
+});
+
 		
 				</script>
 				
